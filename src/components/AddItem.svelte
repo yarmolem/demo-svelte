@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { items } from '../store/items'
+  import { addItem } from '../store/items'
 
   let text = ''
 
   const handleSubmit = () => {
-    items.update(i => [...i, { id: +new Date(), text, done: false }])
+    addItem({ id: +new Date(), text, done: false })
     text = ''
   }
   

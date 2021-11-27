@@ -1,25 +1,13 @@
 <script lang="ts">
   import Item from './Item.svelte'
-  import { items, Item as ItemType } from '../store/items'
-
-  const handleUpdate = (item: ItemType) => {
-    items.update((prevState) => prevState.map((i) => i.id === item.id ? item : i))
-  }
-  
-  const handleDelete = (id: number) => {
-    items.update((prevState) => prevState.filter((i) => i.id !== id ))
-  }
+  import { items } from '../store/items'
   
 
 </script>
 
 <ul>
   {#each $items as item }
-    <Item
-      {item}
-      onEdit={handleUpdate}
-      onDelete={handleDelete}
-    />
+    <Item {item} />
   {/each}
 </ul>
 

@@ -1,9 +1,8 @@
 <script lang="ts">
   import type { Item } from '../store/items'
+  import { updateItems, deleteItem } from '../store/items'
 
   export let item: Item
-  export let onEdit = (i: Item) => {}
-  export let onDelete = (id: number) => {}
 
 </script>
 
@@ -11,10 +10,10 @@
   <input
     type="checkbox"
     checked={item.done}
-    on:input={e => onEdit({ ...item, done: e.currentTarget.checked })}
+    on:input={e => updateItems({ ...item, done: e.currentTarget.checked })}
   >
   <h3 class:line={item.done}>{item.text}</h3>
-  <button on:click={() => onDelete(item.id)}>Eliminar</button>
+  <button on:click={() => deleteItem(item.id)}>Eliminar</button>
 </li>
 
 <style>
